@@ -1,0 +1,230 @@
+// !$*UTF8*$!
+{
+  "archiveVersion" : 1,
+  "classes" : {},
+  "objectVersion" : 56,
+  "rootObject" : "29B97313FDCFA39411CA2CEA",
+  "objects" : {
+    "29B97313FDCFA39411CA2CEA" : {
+      "isa" : "PBXProject",
+      "attributes" : {
+        "BuildIndependentTargetsInParallel" : "YES",
+        "ClassPrefix" : "",
+        "LastSwiftMigration" : 1500,
+        "LastSwiftUpdateCheck" : 1500,
+        "LastUpgradeCheck" : 1500,
+        "ORGANIZATIONNAME" : "PaperFlow Team",
+        "TargetAttributes" : {
+          "29B97325FDCFA39411CA2CEA" : {
+            "CreatedOnToolsVersion" : "15.0",
+            "LastSwiftMigration" : 1500
+          }
+        }
+      },
+      "buildConfigurationList" : "C01FCF4A08A954540054247B",
+      "compatibilityVersion" : "Xcode 15.0",
+      "developmentRegion" : "en",
+      "hasScannedForEncodings" : 1,
+      "knownRegions" : [
+        "en",
+        "Base"
+      ],
+      "mainGroup" : "29B97314FDCFA39411CA2CEA",
+      "productRefGroup" : "29B9731FFDCFA39411CA2CEA",
+      "projectDirPath" : "",
+      "projectRoot" : "",
+      "targets" : [
+        "29B97325FDCFA39411CA2CEA"
+      ]
+    },
+    "29B97314FDCFA39411CA2CEA" : {
+      "isa" : "PBXGroup",
+      "children" : [
+        "29B97315FDCFA39411CA2CEA",
+        "29B9731FFDCFA39411CA2CEA",
+        "29B97324FDCFA39411CA2CEA"
+      ],
+      "sourceTree" : "<group>"
+    },
+    "29B97315FDCFA39411CA2CEA" : {
+      "isa" : "PBXGroup",
+      "children" : [
+        "29B97316FDCFA39411CA2CEA"
+      ],
+      "name" : "PaperFlow",
+      "sourceTree" : "<group>"
+    },
+    "29B97316FDCFA39411CA2CEA" : {
+      "isa" : "PBXGroup",
+      "children" : [
+        "29B97317FDCFA39411CA2CEA",
+        "29B97318FDCFA39411CA2CEA",
+        "29B97319FDCFA39411CA2CEA"
+      ],
+      "name" : "Sources",
+      "sourceTree" : "<group>"
+    },
+    "29B97317FDCFA39411CA2CEA" : {
+      "isa" : "PBXFileReference",
+      "lastKnownFileType" : "sourcecode.swift",
+      "path" : "AppDelegate.swift",
+      "sourceTree" : "<group>"
+    },
+    "29B97318FDCFA39411CA2CEA" : {
+      "isa" : "PBXFileReference",
+      "lastKnownFileType" : "sourcecode.swift",
+      "path" : "ContentView.swift",
+      "sourceTree" : "<group>"
+    },
+    "29B97319FDCFA39411CA2CEA" : {
+      "isa" : "PBXFileReference",
+      "lastKnownFileType" : "folder",
+      "path" : "Assets.xcassets",
+      "sourceTree" : "<group>"
+    },
+    "29B9731FFDCFA39411CA2CEA" : {
+      "isa" : "PBXGroup",
+      "children" : [
+        "29B97320FDCFA39411CA2CEA"
+      ],
+      "name" : "Products",
+      "sourceTree" : "<group>"
+    },
+    "29B97320FDCFA39411CA2CEA" : {
+      "isa" : "PBXFileReference",
+      "explicitFileType" : "wrapper.application",
+      "includeInIndex" : 0,
+      "path" : "PaperFlow.app",
+      "sourceTree" : "BUILT_PRODUCTS_DIR"
+    },
+    "29B97324FDCFA39411CA2CEA" : {
+      "isa" : "PBXGroup",
+      "children" : [
+        "29B97325FDCFA39411CA2CEA"
+      ],
+      "name" : "Targets",
+      "sourceTree" : "<group>"
+    },
+    "29B97325FDCFA39411CA2CEA" : {
+      "isa" : "PBXNativeTarget",
+      "buildConfigurationList" : "C01FCF4B08A954540054247B",
+      "buildPhases" : [
+        "29B97326FDCFA39411CA2CEA",
+        "29B97327FDCFA39411CA2CEA",
+        "29B97328FDCFA39411CA2CEA"
+      ],
+      "buildRules" : [],
+      "dependencies" : [],
+      "name" : "PaperFlow",
+      "productName" : "PaperFlow",
+      "productReference" : "29B97320FDCFA39411CA2CEA",
+      "productType" : "com.apple.product-type.application",
+      "packageProductDependencies" : []
+    },
+    "29B97326FDCFA39411CA2CEA" : {
+      "isa" : "PBXSourcesBuildPhase",
+      "buildActionMask" : 2147483647,
+      "files" : [
+        "29B97329FDCFA39411CA2CEA",
+        "29B9732AFDCFA39411CA2CEA"
+      ],
+      "runOnlyForDeploymentPostprocessing" : 0
+    },
+    "29B97327FDCFA39411CA2CEA" : {
+      "isa" : "PBXFrameworksBuildPhase",
+      "buildActionMask" : 2147483647,
+      "files" : [],
+      "runOnlyForDeploymentPostprocessing" : 0
+    },
+    "29B97328FDCFA39411CA2CEA" : {
+      "isa" : "PBXResourcesBuildPhase",
+      "buildActionMask" : 2147483647,
+      "files" : [
+        "29B9732BFDCFA39411CA2CEA"
+      ],
+      "runOnlyForDeploymentPostprocessing" : 0
+    },
+    "29B97329FDCFA39411CA2CEA" : {
+      "isa" : "PBXBuildFile",
+      "fileRef" : "29B97317FDCFA39411CA2CEA",
+      "settings" : {
+        "COMPILER_FLAGS" : ""
+      }
+    },
+    "29B9732AFDCFA39411CA2CEA" : {
+      "isa" : "PBXBuildFile",
+      "fileRef" : "29B97318FDCFA39411CA2CEA",
+      "settings" : {
+        "COMPILER_FLAGS" : ""
+      }
+    },
+    "29B9732BFDCFA39411CA2CEA" : {
+      "isa" : "PBXBuildFile",
+      "fileRef" : "29B97319FDCFA39411CA2CEA",
+      "settings" : {
+        "COMPILER_FLAGS" : ""
+      }
+    },
+    "C01FCF4A08A954540054247B" : {
+      "isa" : "XCConfigurationList",
+      "buildConfigurations" : [
+        "C01FCF4B08A954540054247B",
+        "C01FCF4C08A954540054247B"
+      ],
+      "defaultConfigurationIsVisible" : 0,
+      "defaultConfigurationName" : "Release"
+    },
+    "C01FCF4B08A954540054247B" : {
+      "isa" : "XCBuildConfiguration",
+      "buildSettings" : {
+        "ASSETCATALOG_COMPILER_APPICON_NAME" : "AppIcon",
+        "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" : "AccentColor",
+        "CODE_SIGN_ENTITLEMENTS" : "",
+        "CODE_SIGN_IDENTITY" : "Apple Development",
+        "CODE_SIGN_STYLE" : "Automatic",
+        "CURRENT_PROJECT_VERSION" : "1",
+        "DEVELOPMENT_TEAM" : "",
+        "ENABLE_PREVIEWS" : "YES",
+        "INFOPLIST_FILE" : "Info.plist",
+        "IPHONEOS_DEPLOYMENT_TARGET" : "16.0",
+        "LD_RUNPATH_SEARCH_PATHS" : [
+          "$(inherited)",
+          "@executable_path/Frameworks"
+        ],
+        "MARKETING_VERSION" : "1.0",
+        "PRODUCT_BUNDLE_IDENTIFIER" : "com.paperflow.app",
+        "PRODUCT_NAME" : "$(TARGET_NAME)",
+        "SWIFT_EMIT_LOC_STRINGS" : "YES",
+        "SWIFT_VERSION" : "5.0",
+        "TARGETED_DEVICE_FAMILY" : "1,2"
+      },
+      "name" : "Debug"
+    },
+    "C01FCF4C08A954540054247B" : {
+      "isa" : "XCBuildConfiguration",
+      "buildSettings" : {
+        "ASSETCATALOG_COMPILER_APPICON_NAME" : "AppIcon",
+        "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" : "AccentColor",
+        "CODE_SIGN_ENTITLEMENTS" : "",
+        "CODE_SIGN_IDENTITY" : "Apple Distribution",
+        "CODE_SIGN_STYLE" : "Automatic",
+        "CURRENT_PROJECT_VERSION" : "1",
+        "DEVELOPMENT_TEAM" : "",
+        "ENABLE_PREVIEWS" : "YES",
+        "INFOPLIST_FILE" : "Info.plist",
+        "IPHONEOS_DEPLOYMENT_TARGET" : "16.0",
+        "LD_RUNPATH_SEARCH_PATHS" : [
+          "$(inherited)",
+          "@executable_path/Frameworks"
+        ],
+        "MARKETING_VERSION" : "1.0",
+        "PRODUCT_BUNDLE_IDENTIFIER" : "com.paperflow.app",
+        "PRODUCT_NAME" : "$(TARGET_NAME)",
+        "SWIFT_EMIT_LOC_STRINGS" : "YES",
+        "SWIFT_VERSION" : "5.0",
+        "TARGETED_DEVICE_FAMILY" : "1,2"
+      },
+      "name" : "Release"
+    }
+  }
+}

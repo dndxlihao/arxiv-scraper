@@ -1,39 +1,35 @@
-# arXiv Research Assistant
+# PaperFlow
 
-一个现代化的 arXiv 论文搜索与管理系统，包含 Web 前端、移动应用原型和强大的论文爬取功能。
+智能论文管理应用，让研究更流畅。即将发布到 Apple Store 的现代化学术论文管理工具。
 
 ## 🚀 项目概览
 
-arXiv Research Assistant 是一个完整的学术论文管理解决方案，帮助研究人员高效地发现、跟踪和管理 arXiv 上的最新研究成果。
+PaperFlow 是一个专为研究人员设计的智能论文管理应用，帮助您高效地发现、跟踪、阅读和管理学术论文，让研究流程更加顺畅。
 
 ### ✨ 核心功能
 
 - **🔍 智能论文搜索** - 支持关键词、日期范围、分类筛选
-- **📱 多平台访问** - Web 界面 + 移动应用原型
-- **📊 数据导出** - JSON、TXT、CSV 多种格式
-- **🎯 个性化推荐** - 基于兴趣的论文推荐
-- **📈 趋势分析** - 热门领域和作者分析
+- **📱 iOS 原生应用** - 专为 iPhone 和 iPad 优化
+- **📚 论文收藏管理** - 创建个人图书馆和阅读列表
+- **🎯 个性化推荐** - 基于研究兴趣的智能推荐
+- **📈 阅读进度跟踪** - 记录阅读历史和笔记
 
 ## 📁 项目结构
 
 ```
-arxiv-research-assistant/
-├── src/                    # arXiv 爬虫核心代码
+PaperFlow/
+├── src/                    # 核心论文爬虫代码
 │   └── arxiv_scraper.py
-├── arxiv_app_prototype/    # Web 应用原型
-│   ├── backend/           # Flask 后端 API
-│   │   └── app.py
-│   ├── frontend/          # React Native 前端
-│   │   ├── App.js
-│   │   ├── babel.config.js
-│   │   └── metro.config.js
-│   ├── simple_frontend.html  # 简易 Web 界面
-│   └── test_dashboard.html   # 测试仪表板
+├── paperflow_app/          # iOS 应用项目
+│   ├── PaperFlow.xcodeproj # Xcode 项目文件
+│   ├── Assets.xcassets/    # 应用图标和资源
+│   └── Sources/            # Swift 源代码
+├── backend/               # 后端 API 服务
+│   └── app.py
 ├── docs/                  # 项目文档
 ├── examples/              # 使用示例
 ├── data/                  # 示例数据
-├── tests/                 # 测试文件
-└── arxiv_mobile_app/      # 移动应用项目（独立仓库）
+└── tests/                 # 测试文件
 ```
 
 ## 🛠️ 快速开始
@@ -42,10 +38,10 @@ arxiv-research-assistant/
 
 ```bash
 # 克隆项目
-git clone https://github.com/yourusername/arxiv-research-assistant.git
-cd arxiv-research-assistant
+git clone https://github.com/dndxlihao/PaperFlow.git
+cd PaperFlow
 
-# 安装依赖
+# 安装 Python 依赖
 pip install -r requirements.txt
 ```
 
@@ -56,95 +52,90 @@ pip install -r requirements.txt
 python src/arxiv_scraper.py --query "machine learning"
 
 # 指定结果数量和日期范围
-python src/arxiv_scraper.py --query "deep learning" --max-results 20 --start-date 2026-01-01
+python src/arxiv_scraper.py --query "deep learning" --max-results 20 --from-date 2026-01-01
 
-# 导出为 CSV 格式
-python src/arxiv_scraper.py --query "computer vision" --category cs.CV --output csv
+# 导出为 TXT 格式
+python src/arxiv_scraper.py --query "computer vision" --category cs.CV --output-format txt
 ```
 
-### 3. 启动 Web 应用
+### 3. 开发 iOS 应用
 
 ```bash
-# 启动后端 API 服务器
-cd arxiv_app_prototype/backend
-python app.py
-
-# 访问 Web 界面
-# 打开浏览器访问: http://localhost:5000
+# 打开 Xcode 项目
+open paperflow_app/PaperFlow.xcodeproj
 ```
 
-## 🌐 Web 应用功能
+## 📱 iOS 应用功能
 
-### 后端 API (Flask)
-- **论文搜索** - `/api/search?q=<query>`
-- **分类浏览** - `/api/category/<category>`
-- **热门论文** - `/api/trending`
-- **作者分析** - `/api/author/<author_name>`
+### 核心功能
+- **原生 iOS 体验** - 专为 iPhone 和 iPad 优化
+- **离线阅读** - 下载论文供离线查看
+- **智能搜索** - 支持自然语言搜索和高级筛选
+- **阅读列表** - 创建和管理个人阅读计划
 
-### 前端界面
-- **响应式设计** - 适配桌面和移动设备
-- **实时搜索** - 输入时即时显示结果
-- **论文收藏** - 保存感兴趣的论文
-- **导出功能** - 一键导出搜索结果
+### 用户界面
+- **现代设计** - 遵循 iOS 设计规范
+- **暗色模式** - 支持系统级暗色模式
+- **手势操作** - 流畅的滑动手势支持
+- **分享集成** - 与 iOS 分享菜单深度集成
 
-## 📱 移动应用原型
+## 🎯 应用特色
 
-项目包含一个 React Native 移动应用原型，位于 `arxiv_mobile_app/` 目录中（独立 Git 仓库）。
+### 智能功能
+- **个性化推荐** - 基于阅读历史和兴趣的智能推荐
+- **阅读统计** - 可视化阅读进度和习惯分析
+- **引用管理** - 自动生成引用格式
+- **协作功能** - 与同事分享论文和笔记
 
-### 移动应用功能
-- **原生体验** - iOS/Android 原生应用
-- **离线阅读** - 缓存论文供离线查看
-- **推送通知** - 新论文提醒
-- **个性化推荐** - 基于阅读历史的智能推荐
+### 发布计划
+- **App Store 发布** - 计划于 2026 年第二季度上线
+- **免费增值模式** - 基础功能免费，高级功能订阅
+- **学术合作** - 与高校和研究机构合作推广
 
-## 📊 数据格式
+## 📊 技术架构
 
-### JSON 输出示例
-```json
-{
-  "title": "Attention Is All You Need",
-  "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar"],
-  "abstract": "The dominant sequence transduction models...",
-  "categories": ["cs.CL", "cs.LG"],
-  "published": "2017-06-12",
-  "updated": "2023-12-01",
-  "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
-  "arxiv_url": "https://arxiv.org/abs/1706.03762"
-}
+### 后端服务
+- **Python Flask API** - 提供论文搜索和数据服务
+- **SQLite 数据库** - 存储用户数据和收藏
+- **Redis 缓存** - 提高搜索响应速度
+- **任务队列** - 异步处理论文更新
+
+### iOS 客户端
+- **SwiftUI** - 现代声明式 UI 框架
+- **Core Data** - 本地数据持久化
+- **Combine** - 响应式编程框架
+- **Swift Concurrency** - 异步任务处理
+
+## 🔧 开发指南
+
+### iOS 开发环境
+```bash
+# 系统要求
+- macOS 13.0 或更高版本
+- Xcode 15.0 或更高版本
+- iOS 16.0 作为部署目标
+
+# 安装依赖
+cd paperflow_app
+pod install  # 如果使用 CocoaPods
 ```
 
-## 🔧 高级配置
-
-### 自定义搜索参数
-```python
-from src.arxiv_scraper import ArxivScraper
-
-scraper = ArxivScraper(
-    max_results=50,
-    delay=2.0,  # 请求延迟（避免频率限制）
-    timeout=30  # 请求超时
-)
-
-results = scraper.search(
-    query="quantum computing",
-    start_date="2026-01-01",
-    category="quant-ph"
-)
-```
-
-### 数据库集成
-项目支持 SQLite 数据库存储，自动记录搜索历史和个人收藏。
+### 代码规范
+- 遵循 Swift API 设计指南
+- 使用 SwiftLint 进行代码检查
+- 编写单元测试和 UI 测试
+- 文档注释使用 DocC 格式
 
 ## 📈 性能优化
 
-- **智能缓存** - 减少重复 arXiv API 调用
-- **批量处理** - 高效处理大量论文数据
-- **并发搜索** - 支持多关键词并行搜索
-- **增量更新** - 只获取最新论文，减少数据量
+- **图片懒加载** - 优化列表滚动性能
+- **数据预取** - 提前加载下一页数据
+- **内存管理** - 智能缓存和资源释放
+- **网络优化** - 请求合并和压缩传输
 
 ## 🤝 贡献指南
 
-欢迎贡献代码、报告问题或提出改进建议！
+欢迎为 PaperFlow 贡献代码、设计或文档！
 
 1. Fork 本仓库
 2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
@@ -159,11 +150,13 @@ results = scraper.search(
 ## 🙏 致谢
 
 - arXiv API 提供论文数据
-- Flask 和 React Native 社区
-- 所有贡献者和用户
+- Apple Developer 社区
+- 所有测试用户和贡献者
 
 ---
 
-**🎯 愿景**: 让学术研究更高效、更智能、更易访问！
+**🎯 愿景**: 让学术研究更流畅、更智能、更愉悦！
+
+**📱 App Store**: 即将上线，敬请期待！
 
 **📞 支持**: 如有问题，请提交 Issue 或通过邮件联系。
