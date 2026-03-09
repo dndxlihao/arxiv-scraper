@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///app/arxiv_app.db
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./backend:/app
+      - arxiv_data:/app/data
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  # Redis缓存和队列
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Celery worker
+  celery-worker:
+    build: ./backend
+    command: celery -A app.celery worker --loglevel=info
+    environment:
+      - DATABASE_URL=sqlite:///app/arxiv_app.db
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./backend:/app
+      - arxiv_data:/app/data
+    depends_on:
+      - backend
+      - redis
+    restart: unless-stopped
+
+  # Celery beat (定时任务)
+  celery-beat:
+    build: ./backend
+    command: celery -A app.celery beat --loglevel=info
+    environment:
+      - DATABASE_URL=sqlite:///app/arxiv_app.db
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./backend:/app
+      - arxiv_data:/app/data
+    depends_on:
+      - backend
+      - redis
+    restart: unless-stopped
+
+  # 前端开发服务器
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_NATIVE_PACKAGER_HOSTNAME=localhost
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+volumes:
+  arxiv_data:
+  redis_data:
