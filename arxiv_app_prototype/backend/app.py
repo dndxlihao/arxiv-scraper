@@ -530,7 +530,8 @@ async def get_daily_digest(username: str):
 
 # 运行服务
 if __name__ == "__main__":
+    port = 8001  # 使用8001端口避免冲突
     print("🚀 启动arXiv推荐API服务...")
-    print("📚 访问 http://localhost:8000")
-    print("📖 API文档: http://localhost:8000/docs")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print(f"📚 访问 http://localhost:{port}")
+    print(f"📖 API文档: http://localhost:{port}/docs")
+    uvicorn.run(app, host="0.0.0.0", port=port)
