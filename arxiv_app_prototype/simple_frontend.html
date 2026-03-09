@@ -1,0 +1,29 @@
+                        test: test.name,
+                        status: '❌ 异常',
+                        statusCode: 'N/A',
+                        detail: error.message
+                    });
+                }
+            }
+            
+            // 最终结果显示
+            const successCount = results.filter(r => r.status.includes('✅')).length;
+            const totalCount = results.length;
+            
+            resultEl.innerHTML = `
+                <div class="${successCount === totalCount ? 'success' : 'error'}" style="margin-bottom: 15px;">
+                    <strong>测试完成:</strong> ${successCount}/${totalCount} 个API测试通过
+                </div>
+                <pre>${JSON.stringify(results, null, 2)}</pre>
+            `;
+        }
+        
+        // 页面加载时检查API状态
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAPIStatus();
+            // 每30秒检查一次API状态
+            setInterval(checkAPIStatus, 30000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+                    return;
+                }
+                
+                let html = '<ul class="paper-list">';
+                papers.forEach(paper => {
+                    html += `
+                        <li class="paper-item">
+                            <div class="paper-title">${paper.title.substring(0, 80)}${paper.title.length > 80 ? '...' : ''}</div>
+                            <div>
+                                ${paper.keywords.slice(0, 3).map(keyword => 
+                                    `<span class="keyword-tag">#${keyword}</span>`
+                                ).join('')}
+                            </div>
+                            <div class="paper-meta">
+                                <div class="paper-authors">${paper.authors.slice(0, 2).join(', ')}${paper.authors.length > 2 ? '等' : ''}</div>
+                                <div class="paper-date">${new Date(paper.published).toLocaleDateString()}</div>
+                            </div>
+                        </li>
+                    `;
+                });
+                html += '</ul>';
+                
+                container.innerHTML = html;
+                addLog(`✅ 搜索 "${query}" 找到 ${papers.length} 篇论文`);
+            } catch (error) {
+                container.innerHTML = `<div style="text-align: center; color: #dc3545; padding: 20px;">搜索失败: ${error.message}</div>`;
+                addLog(`❌ 搜索失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 测试搜索示例
+        function testSearchExamples() {
+            const examples = [
+                'machine learning',
+                'deep learning',
+                'reinforcement learning',
+                'transformer',
+                'computer vision'
+            ];
+            
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            document.getElementById('search-input').value = randomExample;
+            searchPapers();
+        }
+        
+        // 测试所有API
+        async function testAllAPIs() {
+            addLog('🧪 开始全面API测试...', 'warning');
+            
+            const tests = [
+                { name: '用户注册', func: testUserRegistration },
+                { name: '论文推荐', func: testRecommendations },
+                { name: '收藏功能', func: testCollection },
+                { name: '团队功能', func: testTeam },
+                { name: '每日简报', func: testDailyDigest }
+            ];
+            
+            for (const test of tests) {
+                addLog(`🔍 测试: ${test.name}...`);
+                await test.func();
+                await new Promise(resolve => setTimeout(resolve, 500)); // 延迟避免请求过快
+            }
+            
+            addLog('🎉 所有API测试完成！', 'success');
+        }
+        
+        // 测试用户注册
+        async function testUserRegistration() {
+            try {
+                const response = await fetch(`${API_BASE}/users/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: TEST_USER,
+                        email: `${TEST_USER}@example.com`,
+                        interests: ['AI', 'machine learning', 'deep learning'],
+                        team: 'Test Team'
+                    })
+                });
+                
+                if (response.ok) {
+                    addLog('✅ 用户注册测试通过');
+                } else {
+                    addLog('⚠️ 用户可能已存在', 'warning');
+                }
+            } catch (error) {
+                addLog(`❌ 用户注册测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 测试推荐功能
+        async function testRecommendations() {
+            try {
+                const response = await fetch(`${API_BASE}/users/${TEST_USER}/recommendations?limit=1`);
+                if (response.ok) {
+                    const papers = await response.json();
+                    addLog(`✅ 推荐功能测试通过 (${papers.length}篇论文)`);
+                } else {
+                    addLog('❌ 推荐功能测试失败', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ 推荐功能测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 测试收藏功能
+        async function testCollection() {
+            try {
+                // 先获取一篇论文
+                const recResponse = await fetch(`${API_BASE}/users/${TEST_USER}/recommendations?limit=1`);
+                const papers = await recResponse.json();
+                
+                if (papers.length > 0) {
+                    const paperId = papers[0].id;
+                    
+                    // 收藏论文
+                    const collectResponse = await fetch(`${API_BASE}/users/${TEST_USER}/collect/${paperId}`, {
+                        method: 'POST'
+                    });
+                    
+                    if (collectResponse.ok) {
+                        addLog(`✅ 收藏功能测试通过 (论文ID: ${paperId})`);
+                    } else {
+                        addLog('❌ 收藏功能测试失败', 'error');
+                    }
+                } else {
+                    addLog('⚠️ 没有论文可用于收藏测试', 'warning');
+                }
+            } catch (error) {
+                addLog(`❌ 收藏功能测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 测试团队功能
+        async function testTeam() {
+            try {
+                const response = await fetch(`${API_BASE}/teams/create?name=Test%20Team%20${Date.now()}&description=Test%20team%20for%20API%20testing`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addLog(`✅ 团队功能测试通过 (团队ID: ${data.team_id})`);
+                } else {
+                    addLog('❌ 团队功能测试失败', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ 团队功能测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 测试每日简报
+        async function testDailyDigest() {
+            try {
+                const response = await fetch(`${API_BASE}/daily-digest/${TEST_USER}`);
+                
+                if (response.ok) {
+                    const digest = await response.json();
+                    addLog(`✅ 每日简报测试通过 (${digest.papers.length}篇论文)`);
+                } else {
+                    addLog('❌ 每日简报测试失败', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ 每日简报测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 运行完整测试
+        async function runAllTests() {
+            addLog('🚀 开始完整系统测试...', 'warning');
+            
+            // 更新系统状态
+            document.getElementById('system-status').className = 'status-badge status-warning';
+            document.getElementById('system-status').textContent = '测试中';
+            
+            await testAllAPIs();
+            await loadRecommendations();
+            
+            // 更新系统状态
+            document.getElementById('system-status').className = 'status-badge status-success';
+            document.getElementById('system-status').textContent = '测试完成';
+            
+            addLog('🎊 完整系统测试完成！', 'success');
+        }
+        
+        // 刷新数据
+        async function refreshData() {
+            addLog('🔄 刷新系统数据...');
+            await loadRecommendations();
+            addLog('✅ 数据刷新完成');
+        }
+        
+        // 清除测试结果
+        function clearTestResults() {
+            const logDiv = document.getElementById('test-log');
+            logDiv.innerHTML = '<div>🧹 测试日志已清除</div>';
+            addLog('测试日志已清除');
+        }
+        
+        // 初始化
+        async function init() {
+            updateTime();
+            setInterval(updateTime, 1000);
+            
+            // 检查后端连接
+            try {
+                const response = await fetch(`${API_BASE}/`);
+                if (response.ok) {
+                    addLog('✅ 后端服务连接成功');
+                }
+            } catch (error) {
+                addLog(`❌ 后端服务连接失败: ${error.message}`, 'error');
+                document.getElementById('system-status').className = 'status-badge status-error';
+                document.getElementById('system-status').textContent = '连接失败';
+            }
+            
+            // 加载初始数据
+            await loadRecommendations();
+            
+            // 设置搜索输入回车事件
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchPapers();
+                }
+            });
+            
+            addLog('📱 测试仪表板初始化完成');
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
